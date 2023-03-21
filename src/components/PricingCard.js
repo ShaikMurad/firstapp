@@ -1,6 +1,7 @@
 import React from "react";
+
+// REACT COMPONENT
 export default function Card(props) {
-  console.log(props);
   const { price } = props;
   return (
     <div className="col-lg-4">
@@ -65,7 +66,7 @@ export default function Card(props) {
             </li>
           </ul>
           <div className="d-grid">
-            <a href="#" className="btn btn-primary text-uppercase">
+            <a href="/" className="btn btn-primary text-uppercase">
               Button
             </a>
           </div>
