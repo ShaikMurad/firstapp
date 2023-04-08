@@ -1,53 +1,44 @@
-import React, { useEffect, useState } from "react";
-
-// function usestate() {
-//     return [0, function () {
-//         // do Something
-//     }];
-// }
+import React, { useEffect, useState, useReducer } from "react";
+import CountForm from "../components/CountForm";
 
 function Counter(props) {
-  // STATE
-  const [count, setCount] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [x, y] = useState(0);
+  const [state, dispatch] = useReducer((initialState, action) => {
+    console.log(action);
+    switch (action.type) {
+      case "add":
+        initialState = action.payload;
+        break;
+      case "reset":
+        initialState = 0;
+        break;
+      default:
+        initialState = action.payload;
+        break;
+    }
+    return initialState;
+  }, 0);
 
-  useEffect(() => {
-    console.log("RENDERING");
-  }, []);
+  // RUNS WHENEVER THE VALUE REFERED IN THE DEPENDENCY ARRAY CHANGES
+  // useEffect(() => {
+  //   console.log("EFFECT RUNING");
+  //   if (count === 5) {
+  //     alert(count);
+  //   }
+  // }, [count]);
 
-  useEffect(() => {
-    console.log("Count changed");
-  }, [count]);
-
-  (() => {
-    console.log("IIFE");
-  })();
-
-  function handleChange(type) {
-    if (type === "decrement" && count >= 1) setCount(count - 1);
-    else if (type === "increment") setCount(count + 1);
-  }
+  // function handleChange(e, type) {
+  //   console.log(e, type);
+  //   const id = e.target.id;
+  //   if (id === "decrement" && count >= 1) setCount(count - 1);
+  //   else if (id === "increment") setCount(count + 1);
+  // }
   return (
     <div className="container">
       <div className="row">
         <div className="counter-container">
-          <button
-            className="counter-button"
-            onClick={() => handleChange("decrement")}
-          >
-            -
-          </button>
-          <div style={{ width: 20 }}></div>
-          <p id="counter-value" className="counter-text">
-            {count}
-          </p>
-          <div style={{ width: 20 }}></div>
-          <button
-            className="counter-button"
-            onClick={() => handleChange("increment")}
-          >
-            +
-          </button>
+          <a href="#">Pricing</a>
+          <CountForm count={state} handleChange={dispatch} />
         </div>
       </div>
     </div>

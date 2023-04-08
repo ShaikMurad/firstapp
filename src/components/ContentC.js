@@ -1,11 +1,15 @@
 import React from "react";
+
 function ContentC(props) {
-  const { heading = "", Description = "" } = props;
+  var x = 10;
+  const { heading = "", description = "" } = props;
   return (
-    <div>
-      {<h1>{heading}</h1>}
-      <p>{Description}</p>
-    </div>
+    <>
+      <h1>{heading}</h1>
+      <p>{x}</p>
+      <p>{description}</p>
+    </>
   );
 }
+
 export default ContentC;

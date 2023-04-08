@@ -1,20 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import Counter from "./pages/counter";
-import Pricing from "./pages/pricing";
 import Cart from "./pages/Cart";
-import ContentPage from "./pages/Content";
+import Counter from "./pages/counter";
+import { Routes, Route } from "react-router-dom";
+
+// IMPORTING NEW PAGES
+import Signin from "./NewPages/Signin";
+import Signup from "./NewPages/Signup";
+import Home from "./NewPages/home";
+import Navbar from "./components/Navbar";
 
 function App() {
-  const [page, setPage] = useState("content");
   return (
     <div className="App">
-      <section className="pricing py-5">
-        {page === "counter" && <Counter />}
-        {page === "pricing" && <Pricing />}
-        {page === "cart" && <Cart />}
-        {page === "content" && <ContentPage />}
-      </section>
+      <Navbar />
+      <Routes>
+        <Route path="signin" Component={Signin} />
+        <Route path="signup" Component={Signup} />
+        <Route path="home" Component={Home}>
+          <Route path="cart" Component={Cart} />
+          <Route path="counter" element={<Counter />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

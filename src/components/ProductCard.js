@@ -9,7 +9,7 @@ export default function ProductCard(props) {
           <div className="col-8">
             <div className="d-flex flex-column justify-content-center">
               <h3>{data.label || "Name Not Available"}</h3>
-              <p className="">{`₹${data.price}` || "Price not available"}</p>
+              <p class="">{`₹${data.price}` || "Price not available"}</p>
             </div>
           </div>
           <div className="col-4">
